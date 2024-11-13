@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixel Advertising</title>
+    <style>
+        .pixel-grid {
+            display: grid;
+            grid-template-columns: repeat(100, 10px);
+            grid-template-rows: repeat(100, 10px);
+        }
+        .pixel {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 5px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="pixel-grid"></div>
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>
