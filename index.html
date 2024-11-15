@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Million Dollar Homepage Clone</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(100, 10px);
+            gap: 1px;
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .pixel {
+            width: 10px;
+            height: 10px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Million Dollar Homepage Clone</h1>
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const pixelData = {}; // This will store information about each pixel (in reality, you'd get this data from a database)
+
+        for (let i = 0; i < 10000; i++) {
+            const pixel = document.createElement('div');
+            pixel.classList.add('pixel');
+            pixel.dataset.pixelId = i; // Assign each pixel an ID
+            pixel.addEventListener('click', () => {
+                const pixelId = pixel.dataset.pixelId;
+                if (!pixelData[pixelId]) {
+                    const color = prompt("Enter color for this pixel (e.g., #ff0000):");
+                    const url = prompt("Enter URL for this pixel:");
+                    if (color && url) {
+                        pixel.style.backgroundColor = color;
+                        pixelData[pixelId] = { color, url };
+                        // Here you would send the data to the server to save it
+                        console.log(`Saving pixel ${pixelId} with color ${color} and URL ${url}`);
+                    }
+                } else {
+                    alert("This pixel is already bought!");
+                }
+            });
+            grid.appendChild(pixel);
+        }
+    </script>
+</body>
+</html>
